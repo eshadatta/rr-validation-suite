@@ -136,6 +136,7 @@ def check_relationships():
     files_exist = []
     for record in info['record_info']['rel']:
         related_relshp = get_related_records(record['id'])
+        print(related_relshp)
         if related_relshp:
             files_exist.append(record['id'])
             if related_relshp['related_relationship']:
@@ -158,5 +159,7 @@ def process_relationships(current_record, file_path, rel_file=None):
             info["record_info"] = rel
             info["errors"] = []
             msg = check_relationships()
+        else:
+            msg = "No relationships found, nothing to check"
     return msg
     
